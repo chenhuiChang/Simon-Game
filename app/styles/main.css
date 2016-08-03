@@ -1,3 +1,161 @@
+.circle-row {
+  display: inline;
+}
+.circle-common {
+  cursor: pointer;
+  width: 15vw;
+  height: 15vw;
+  border-color:#CCC;
+  border-style: solid;
+  float: left;
+}
+.circle1 {
+  -webkit-border-radius: 15vw 0 0 0;
+  -moz-border-radius: 15vw 0 0 0;
+  border-radius: 15vw 0 0 0;
+  background-color:#D00;
+}
+.circle2 {
+  -webkit-border-radius: 0 15vw 0 0;
+  -moz-border-radius: 0 15vw 0 0;
+  border-radius: 0 15vw 0 0;
+  background-color:#009;
+}
+.circle3 {
+  -webkit-border-radius: 0 0 0 15vw;
+  -moz-border-radius: 0 0 0 15vw;
+  border-radius: 0 0 0 15vw;
+  background-color:#0E0;
+}
+.circle4 {
+  -webkit-border-radius: 0 0 15vw 0;
+  -moz-border-radius: 0 0 15vw 0;
+  border-radius: 0 0 15vw 0;
+  background-color:#EE0;
+}
+.circle-sm-common {
+  cursor: auto;
+  width: 10vw;
+  height: 10vw;
+  border-style: solid;
+  position:relative;
+  background-color:rgb(161, 220, 225);
+  border-color:rgb(161, 220, 225);
+}
+.circle1-sm {
+  -webkit-border-radius: 10vw 0 0 0;
+  -moz-border-radius: 10vw 0 0 0;
+  border-radius: 10vw 0 0 0;
+  right:-5vw;
+  bottom:-5vw;
+}
+.circle2-sm {
+  -webkit-border-radius: 0 10vw 0 0;
+  -moz-border-radius: 0 10vw 0 0;
+  border-radius: 0 10vw 0 0;
+  right:0vw;
+  bottom:-5vw;
+}
+.circle3-sm {
+  -webkit-border-radius: 0 0 0 10vw;
+  -moz-border-radius: 0 0 0 10vw;
+  border-radius: 0 0 0 10vw;
+  right:-5vw;
+  bottom:0vw;
+}
+.circle4-sm {
+  -webkit-border-radius: 0 0 10vw 0;
+  -moz-border-radius: 0 0 10vw 0;
+  border-radius: 0 0 10vw 0;
+  right:0vw;
+  bottom:0vw;
+}
+.btn-group{
+  display: inline-block;
+  position:relative;
+  left:3vw;
+  top:2vw;
+  z-index: 3;
+}
+.btn-group-menber{
+  display: inline-block;
+}
+.circle-btn {
+  cursor: pointer;
+  width: 1em;
+  height: 1em;
+  border-style: solid;
+  border-radius: 1em;
+}
+
+#start {
+  width: 2vw;
+  height: 2vw;
+  border-radius: 2vw;
+  background-color: #D00;
+}
+#start:hover {
+  background-color: #E00;
+}
+#strict {
+  width: 2vw;
+  height: 2vw;
+  border-radius: 2vw;
+  background-color: #DD0;
+}
+#strict:hover {
+  background-color: #EE0;
+}
+#strict-light {
+  width: 1vw;
+  height: 1vw;
+  border-style: solid;
+  border-radius: 1vw;
+  background-color: #111;
+  position:relative;
+}
+#counter {
+  position:relative;
+  width: 5em;
+  left: 4vw;
+  top: 4vw;
+  border-style: dotted;
+  background-color: #FFE;
+}
+#counter p {
+  font-size: 3vw;
+}
+#mark {
+  font-size:2vw;
+  position:relative;
+  top: 3vw;
+}
+.switch-group {
+  display: inline;
+  position:relative;
+  top:2vw;
+}
+.switch-group p {
+  display: inline;
+}
+#switch {
+  cursor: pointer;
+  display: inline-block;
+  background-color: #FCB;
+  border-style: solid;
+  width: 4em;
+  height: 2em;
+}
+#s-move {
+  background-color: #009;
+  width: 1.8em;
+  height: 1.6em;
+  float: left;
+}
+.inner {
+  width: 30vw;
+  margin: 0 auto;
+}
 .browserupgrade {
   margin: 0.2em 0;
   background: #ccc;
@@ -47,6 +205,8 @@ body {
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
+  width: 45vw;
+  background-color: white;
 }
 
 .jumbotron .btn {
@@ -66,7 +226,7 @@ body {
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    max-width: 1300px;
   }
 
   /* Remove the padding we set earlier */
