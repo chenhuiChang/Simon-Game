@@ -1,11 +1,11 @@
-var LENGTH = 5,
+var LENGTH = 20,
     answer = [],
     user = [],
     strictMode = 0,
     turnON = 0,
     currentSetep = 0,
     play = 0;
-var c = new Array(5);
+var c = new Array(LENGTH);
 c[0] = ['rgb(161, 220, 225)', 'rgb(200, 225, 225)']
 c[1] = ['#D00', '#F00'];
 c[2] = ['#009', '#00F'];
