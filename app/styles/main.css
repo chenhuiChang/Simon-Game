@@ -13,25 +13,25 @@
   -webkit-border-radius: 15vw 0 0 0;
   -moz-border-radius: 15vw 0 0 0;
   border-radius: 15vw 0 0 0;
-  background-color:#D00;
+  background-color:#A00;
 }
 .circle2 {
   -webkit-border-radius: 0 15vw 0 0;
   -moz-border-radius: 0 15vw 0 0;
   border-radius: 0 15vw 0 0;
-  background-color:#009;
+  background-color:#006;
 }
 .circle3 {
   -webkit-border-radius: 0 0 0 15vw;
   -moz-border-radius: 0 0 0 15vw;
   border-radius: 0 0 0 15vw;
-  background-color:#0E0;
+  background-color:#0A0;
 }
 .circle4 {
   -webkit-border-radius: 0 0 15vw 0;
   -moz-border-radius: 0 0 15vw 0;
   border-radius: 0 0 15vw 0;
-  background-color:#EE0;
+  background-color:#AA0;
 }
 .circle-sm-common {
   cursor: auto;
@@ -115,17 +115,24 @@
   position:relative;
 }
 #counter {
+  font-family: 'Passion One', cursive;
   position:relative;
-  width: 5em;
+  text-align: center;
+  width: 4vw;
+  height: 4.5vw;
   left: 4vw;
   top: 4vw;
   border-style: dotted;
   background-color: #FFE;
 }
+.button-words {
+  font-family: 'Noto Serif', serif;
+}
 #counter p {
   font-size: 3vw;
 }
 #mark {
+  font-family: 'Passion One', cursive;
   font-size:2vw;
   position:relative;
   top: 3vw;
@@ -143,13 +150,13 @@
   display: inline-block;
   background-color: #FCB;
   border-style: solid;
-  width: 4em;
-  height: 2em;
+  width: 4vw;
+  height: 2vw;
 }
 #s-move {
   background-color: #009;
-  width: 1.8em;
-  height: 1.6em;
+  width: 1.8vw;
+  height: 1.8vw;
   float: left;
 }
 .inner {

@@ -4,16 +4,27 @@ var LENGTH = 20,
     strictMode = 0,
     turnON = 0,
     currentSetep = 0,
+    test = [1,1,1,2,2,2],
+    gamestartTimeout = null,
     play = 0;
 var c = new Array(LENGTH);
 c[0] = ['rgb(161, 220, 225)', 'rgb(200, 225, 225)']
-c[1] = ['#D00', '#F00'];
-c[2] = ['#009', '#00F'];
-c[3] = ['#0E0', '#0F0'];
-c[4] = ['#EE0', '#FF0'];
+c[1] = ['#A00', '#F00'];
+c[2] = ['#006', '#00F'];
+c[3] = ['#0A0', '#0F0'];
+c[4] = ['#AA0', '#FF0'];
+function reset() {
+    $('#s-move').css('float', 'right');
+    $('#counter').html('<p>00</p>');
+    user.length = 0;
+    answer.length = 0;
+    play = 0;
+}
 function circleClick(id) {
     id = id || 0;
     $('.circle' + id).css('background-color', c[id][1]);
+    document.getElementById('audio' + id).currentTime = 0;
+    document.getElementById('audio' + id).play();
     setTimeout(function () {
         $('.circle' + id).css('background-color', c[id][0]);
     }, 100);
@@ -21,12 +32,14 @@ function circleClick(id) {
 function wrong() {
     var _color = 'white',
         i = 0;
-    $('#counter').html('<p>!!!!</p>');
+    $('#counter').html('<p><br></p>');
+    $('#mark').html('WRONG');
     $('#counter').css('background-color', _color);
     $('.circle-sm-common').css('background-color', _color);
     $('.circle-sm-common').css('border-color', _color);
     setTimeout(function () {
         updateCounter();
+        $('#mark').html('Simmon<br>Game');
         $('#counter').css('background-color', '#FFE');
         $('.circle-sm-common').css('background-color', 'rgb(161, 220, 225)');
         $('.circle-sm-common').css('border-color', 'rgb(161, 220, 225)');
@@ -52,14 +65,14 @@ function termA(count) {
                     console.log('answer:' + answer[i]);
                     circleClick(answer[i]);
                 }
-            }, 500 * i);
+            }, 800 * i);
         } (i));
     }
 }
 function end() {
     setTimeout(function () {
         alert('All correct!');
-        $('#switch').click().click();
+        reset();
     }, 100);
 }
 function termB(input) {
@@ -74,24 +87,27 @@ function termB(input) {
                 end();
                 return;
             } else {
+                play = 0;
                 currentSetep++;
                 user.length = 0;
                 updateCounter();
-                termA(currentSetep);
+                setTimeout(function() {
+                    termA(currentSetep);
+                }, 1000);
             }
         }
     } else {
+        play = 0;
         if (strictMode) {
             console.log('Wrong! Let me show you again!');
             wrong();
-            $('#switch').click().click();
+            reset();
             setTimeout(function() {
                 gamestart();
             }, 1000);
         } else {
             console.log('Wrong! Let me show you again!');
             wrong();
-            updateCounter
             user.length = 0;
             setTimeout(function() {
                 termA(currentSetep);    
@@ -104,20 +120,29 @@ function gamestart() {
     var i = 0,
         tiemout;
     if (!turnON) return;
-    console.log('start');
-    currentSetep = 0;
-    answer.length = 0;
-    updateCounter();
-    while (i != LENGTH) {
-        answer.push(~~(Math.random() * 4 + 1));
-        i++;
-    }
-    console.log(answer);
-    currentSetep++;
-    updateCounter();
-    termA(currentSetep);
+    reset();
+    if (gamestartTimeout != null) {
+        clearTimeout(gamestartTimeout);
+    } 
+    gamestartTimeout = setTimeout(function () {
+        console.log('start');
+        currentSetep = 0;
+        answer.length = 0;
+        updateCounter();
+        while (i != LENGTH) {
+            answer.push(~~(Math.random() * 4 + 1));
+            i++;
+        }
+        // answer = test.slice();
+        console.log(answer);
+        currentSetep++;
+        updateCounter();
+        termA(currentSetep);
+        gamestartTimeout = null;
+    }, 800);
 }
 function setStrict() {
+    if (!turnON) return;
     strictMode ^= 1;
     if (strictMode) {
         $('#strict-light').css('background-color', '#F00');
@@ -137,14 +162,11 @@ $('#switch').click(function (e) {
     e.stopPropagation();
     turnON ^= 1;
     if (turnON) {
-        $('#s-move').css('float', 'right');
-        $('#counter').html('<p>00</p>');
-        user.length = 0;
-        answer.length = 0;
-        play = 0;
+        reset();
     } else {
         $('#s-move').css('float', 'left');
         $('#counter').html('<p>&nbsp;</p>');
+        $('#strict-light').css('background-color', '#111');
     }
 });
 $('.circle-sm-common').click(function (e) {
@@ -171,6 +193,6 @@ $('.circle3').click(function () {
 $('.circle4').click(function () {
     if (play) {
         circleClick(4);
-        termB(4)
+        termB(4);
     }
 });
